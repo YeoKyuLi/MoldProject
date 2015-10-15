@@ -1,0 +1,19 @@
+.index_table{
+    padding:10px;
+    border:1px solid #ACB4F2;
+    border-collapse: collapse;
+    width : 100px;
+    height : 200px;
+    /*
+    style : "table-layout:fixed"; table size fixed
+    style : "word-break:break-all";  auto change
+    */
+}
+th, td, tr {
+    border: 1px solid #bcbcbc;
+    padding: 5px 10px;
+    margin : auto;
+    style : "word-break:break-all";
+    border-collapse: collapse;
+    style : "width:100%;height:100%;overflow:auto"; /* text 보다 길어지면 스크롤 생김 */
+}
