@@ -2,48 +2,109 @@
  * Created by yeokyuli on 10/10/15.
  */
 
+/*
+*   첫 줄의 월과 일, 요일을 그려주는 부분
+*
+ */
 function addTable(){
     var toDay = new Date();
     var i;
-    document.getElementById('table_month').innerHTML = (toDay.getMonth()+1)+"월"; //현재 월을 입력한다.
+    var month = toDay.getMonth()+1;
+    var monLast =  [31,28,31,30,31,30,31,31,30,31,30,31];
+    document.getElementById('table_month').innerHTML = (month)+"월"; //현재 월을 입력한다.
+
+    //윤년 계산
+    if ((toDay.getYear() % 4 == 0 && toDay.getYear() % 100 != 0) || toDay.getYear() % 400 == 0)
+        monLast[1] = 29;
+    else
+        monLast[1] = 28;
 
     var table_id = document.getElementById('index_table'); //추가할 테이블
     // Insert a row in the table at row index 0
     var newRow = table_id.insertRow(1);
-
-    for(i =0 ; i < 19; i++) {
+    var date = toDay.getDate();   //일 구하기
+    for(i =0 ; i < 15; i++) {
         // Insert a cell in the row at index 0
         var newCell = newRow.insertCell(i); //ROW 위치
-        var date = toDay.getDay(); //요일을 구해서 바꿈.
-        switch (date) {
+        var day = toDay.getDay()+i; //요일 구하기
+        day = day % 7;
+        switch (day) {
             case 0 :
-                date = "일";
-                break;
+                day = "일";break;
             case 1 :
-                date = "월";
-                break;
+                day = "월";break;
             case 2 :
-                date = "화";
-                break;
+                day = "화";break;
             case 3 :
-                date = "수";
-                break;
+                day = "수";break;
             case 4 :
-                date = "목";
-                break;
+                day = "목";break;
             case 5 :
-                date = "금";
-                break;
+                day = "금";break;
             case 6 :
-                date = "토";
-                break;
+                day = "토";break;
             default :
-                date = "error";
-                break;
+                day = "error";break;
         }
 
+        var nowDate = date + i;//일 구하기
+        //var lastDay = ( new Date( toDay.getFullYear(), month, 0) ).getDate(); //마지막날 구하는 부분
+        var count = 1;
+        /*
+        var change = false;
+        switch (month) {
+            case 1 :
+                if(nowDate == lastDate[0])
+                break;
+            case 2 :
+                day = "월";
+                break;
+            case 3 :
+                day = "화";
+                break;
+            case 4 :
+                day = "수";
+                break;
+            case 5 :
+                day = "목";
+                break;
+            case 6 :
+                day = "금";
+                break;
+            case 7 :
+                day = "토";
+                break;
+            case 8 :
+                day = "토";
+                break;
+            case 9 :
+                day = "토";
+                break;
+            case 10 :
+                if(nowDate > lastDate[9]) {
+                    change = true;
+                }
+                if(change){
+                    nowDate = parseInt(0);
+                    nowDate = parseInt(nowDate) + parseInt(count);
+                    count++;
+                    document.write('add?');
+                }
+                break;
+            case 11 :
+                day = "토";
+                break;
+            case 12 :
+                day = "토";
+                break;
+            default :
+                day = "error";
+                break;
+        }
+*/
+
         // Append a text node to the cell
-        var newText = document.createTextNode(toDay.getDate() + "일(" + date + ")"); //추가
+        var newText = document.createTextNode(nowDate + "일(" + day + ")"); //추가
         newCell.appendChild(newText);
     }
 }

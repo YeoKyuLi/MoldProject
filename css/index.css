@@ -1,13 +1,18 @@
-.index_table{
+#index_table{
     padding:10px;
-    border:1px solid #ACB4F2;
+    border:1px;
+    style : "word-break:break-all";
     border-collapse: collapse;
-    width : 100px;
-    height : 200px;
     /*
     style : "table-layout:fixed"; table size fixed
     style : "word-break:break-all";  auto change
     */
+}
+#table_month{
+    padding:10px;
+    border:1px;
+    border-collapse: collapse;
+    style : "word-break:break-all";
 }
 th, td, tr {
     border: 1px solid #bcbcbc;
